@@ -106,7 +106,7 @@ class _TodoListPageState extends State<TodoListPage> {
       });
     } else {
       // show error
-      showErrorMessage(context, message: 'Deletion failed');
+      showErrorMessage(context, 'Deletion failed');
     }
   }
 
@@ -118,7 +118,7 @@ class _TodoListPageState extends State<TodoListPage> {
         items = response;
       });
     } else {
-      showErrorMessage(context, message: 'Something went wrong');
+      showErrorMessage(context, 'Something went wrong');
     }
 
     setState(() {

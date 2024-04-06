@@ -61,7 +61,10 @@ class _AddTodoPageState extends State<AddTodoPage> {
           ),
           const SizedBox(height: 20),
           ElevatedButton(
-            onPressed: isEdit ? updateData : createData,
+            onPressed: () {
+              isEdit ? updateData() : createData();
+              FocusScope.of(context).unfocus();
+            },
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
@@ -78,7 +81,6 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final todo = widget.todo;
 
     if (todo == null) {
-      print('cannot update without todo data');
       return;
     }
 
@@ -87,9 +89,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final isSuccess = await TodoService.updateTodo(id, body);
 
     if (isSuccess) {
-      showSuccessMessage(context, message: 'Update success');
+      showSuccessMessage(context, 'Update success');
     } else {
-      showErrorMessage(context, message: 'Update failed');
+      showErrorMessage(context, 'Update failed');
     }
   }
 
@@ -101,9 +103,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     if (isSuccess) {
       titleController.text = '';
       descriptionController.text = '';
-      showSuccessMessage(context, message: 'Creation success');
+      showSuccessMessage(context, 'Creation success');
     } else {
-      showErrorMessage(context, message: 'Creation failed');
+      showErrorMessage(context, 'Creation failed');
     }
   }
 

@@ -1,33 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:toastification/toastification.dart';
 
-void showErrorMessage(
-  BuildContext context, {
-  required String message,
-}) {
-  final snackBar = SnackBar(
-    content: Text(
-      message,
-      style: const TextStyle(
-        color: Colors.black,
-      ),
-    ),
-    backgroundColor: Colors.redAccent[100],
+void showErrorMessage(BuildContext context, String message) {
+  toastification.show(
+    context: context,
+    type: ToastificationType.error,
+    style: ToastificationStyle.flatColored,
+    autoCloseDuration: const Duration(seconds: 3),
+    title: Text(message),
+    alignment: Alignment.bottomCenter,
   );
-  ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
 
-void showSuccessMessage(
-  BuildContext context, {
-  required String message,
-}) {
-  final snackBar = SnackBar(
-    content: Text(
-      message,
-      style: const TextStyle(
-        color: Colors.black,
-      ),
-    ),
-    backgroundColor: Colors.greenAccent[100],
+void showSuccessMessage(BuildContext context, String message) {
+  toastification.show(
+    context: context,
+    type: ToastificationType.success,
+    style: ToastificationStyle.flatColored,
+    autoCloseDuration: const Duration(seconds: 3),
+    title: Text(message),
+    alignment: Alignment.bottomCenter,
   );
-  ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
