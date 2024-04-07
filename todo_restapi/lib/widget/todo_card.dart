@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:toastification/toastification.dart';
 import 'package:todo_restapi/utils/delete_alert.dart';
 
 class TodoCard extends StatelessWidget {
@@ -23,7 +22,13 @@ class TodoCard extends StatelessWidget {
       background: Container(
         padding: const EdgeInsets.only(left: 28),
         alignment: Alignment.centerLeft,
-        child: const Icon(Icons.delete),
+        decoration: BoxDecoration(
+          color: Colors.redAccent[100],
+        ),
+        child: const Icon(
+          Icons.delete,
+          color: Colors.black,
+        ),
       ),
       direction: DismissDirection.startToEnd,
       confirmDismiss: (direction) async {

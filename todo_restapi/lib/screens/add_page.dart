@@ -89,9 +89,14 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final isSuccess = await TodoService.updateTodo(id, body);
 
     if (isSuccess) {
-      showSuccessMessage(context, 'Update success');
+      if (mounted) {
+        showSuccessMessage(context, 'Update success');
+        Navigator.of(context).pop();
+      }
     } else {
-      showErrorMessage(context, 'Update failed');
+      if (mounted) {
+        showErrorMessage(context, 'Update failed');
+      }
     }
   }
 
@@ -103,9 +108,14 @@ class _AddTodoPageState extends State<AddTodoPage> {
     if (isSuccess) {
       titleController.text = '';
       descriptionController.text = '';
-      showSuccessMessage(context, 'Creation success');
+      if (mounted) {
+        showSuccessMessage(context, 'Creation success');
+        Navigator.of(context).pop();
+      }
     } else {
-      showErrorMessage(context, 'Creation failed');
+      if (mounted) {
+        showErrorMessage(context, 'Creation failed');
+      }
     }
   }
 
